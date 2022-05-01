@@ -16,15 +16,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Setup git config
+      - name: Configure committer
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-      - name: Update Changelog
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo 'print secrets.PUBLISH_TOKEN ${{ secrets.PUBLISH_TOKEN }}'
-          echo 'print secrets.GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}'
-          npx standard-version
-          git push --follow-tags origin main
+      - name: Bump version
+        uses: qzb/standard-version@v1
+
+      # - name: Update Changelog
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     echo 'print secrets.PUBLISH_TOKEN ${{ secrets.PUBLISH_TOKEN }}'
+      #     echo 'print secrets.GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}'
+      #     npx standard-version
+      #     git push --follow-tags origin main
