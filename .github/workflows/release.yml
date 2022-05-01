@@ -23,7 +23,10 @@ jobs:
       - name: Standard Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: qzb/standard-version-action@v1.0.5
+        run: |
+          echo 'print secrets.GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}'
+          npx standard-version
+          git push --follow-tags origin main
 
       # - name: Update Changelog
       #   env:
