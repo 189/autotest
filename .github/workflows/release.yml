@@ -22,9 +22,9 @@ jobs:
           git config user.email "<>"
       - name: Update Changelog
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo 'print secrets.GIT_TOKEN ${{ secrets.GIT_TOKEN }}'
+          echo 'print secrets.PUBLISH_TOKEN ${{ secrets.PUBLISH_TOKEN }}'
           echo 'print secrets.GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}'
           npx standard-version
           git push --follow-tags origin main
